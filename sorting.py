@@ -78,7 +78,7 @@ def main():
     insertion_sort(li)
 
     quick_sort(li_for_quick, 0, len(li_for_quick)-1)
-    print(li_for_quick)
+    print("quick_sort => ", li_for_quick)
 
 
 if __name__ == "__main__":

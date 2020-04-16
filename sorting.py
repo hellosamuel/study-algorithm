@@ -1,3 +1,35 @@
+def heap_sort(li):
+    # 추가적인 배열이 필요하지 않아, 공간복잡도에서 효율적
+    # Heapify 복잡도: O(log N)
+    # 복잡도: O(N * log N) 보장
+    # 이론적으로는 퀵, 병합 정렬보다 우위지만 속도는 퀵이 일반적이 더 빠름
+
+    def heapify(unsorted, idx, heap_size):
+        print(unsorted, idx, heap_size)
+        largest = idx
+        left_idx = 2 * idx + 1
+        right_idx = 2 * idx + 2
+
+        if left_idx < heap_size and unsorted[left_idx] > unsorted[largest]:
+            largest = left_idx
+        if right_idx < heap_size and unsorted[right_idx] > unsorted[largest]:
+            largest = right_idx
+        if largest != idx:
+            unsorted[largest], unsorted[idx] = unsorted[idx], unsorted[largest]
+            heapify(unsorted, largest, heap_size)
+
+    n = len(li)
+
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(li, i, n)
+
+    for i in range(n - 1, 0, -1):
+        li[0], li[i] = li[i], li[0]
+        heapify(li, 0, i)
+
+    return li
+
+
 def merge_sort(li):
     # 반으로 쪼개고, 나중에 이것을 정렬하면서 합쳐 간다
     # 복잡도: O(N * logN)보장
@@ -100,6 +132,7 @@ def main():
     print("insertion_sort => ", insertion_sort(li))
     print("quick_sort => ", quick_sort(li))
     print("merge_sort => ", merge_sort(li))
+    print("heap_sort => ", heap_sort(li))
 
 
 if __name__ == "__main__":

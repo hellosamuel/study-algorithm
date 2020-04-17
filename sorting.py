@@ -5,15 +5,16 @@ def counting_sort(li):
     # 최대값은 알고 있으면 좋다, 정해져 있거나.
     m = max(li)
 
-    result = [0] * m
+    count_li = [0] * m
 
     for i in li:
-        result[i-1] += 1
+        count_li[i-1] += 1
 
+    sorted_li = []
     for i in range(m):
-        li[i] = (i+1) * result[i]
+        sorted_li += [i+1] * count_li[i]
 
-    return li
+    return sorted_li
 
 
 def heap_sort(li):

@@ -1,3 +1,21 @@
+def counting_sort(li):
+    # 크기를 기준으로 세는 알고리즘
+    # 복잡도 O(N)
+
+    # 최대값은 알고 있으면 좋다, 정해져 있거나.
+    m = max(li)
+
+    result = [0] * m
+
+    for i in li:
+        result[i-1] += 1
+
+    for i in range(m):
+        li[i] = (i+1) * result[i]
+
+    return li
+
+
 def heap_sort(li):
     # 추가적인 배열이 필요하지 않아, 공간복잡도에서 효율적
     # Heapify 복잡도: O(log N)
@@ -133,6 +151,7 @@ def main():
     print("quick_sort => ", quick_sort(li))
     print("merge_sort => ", merge_sort(li))
     print("heap_sort => ", heap_sort(li))
+    print("counting_sort => ", counting_sort(li))
 
 
 if __name__ == "__main__":
